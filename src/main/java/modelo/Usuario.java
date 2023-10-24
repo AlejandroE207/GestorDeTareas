@@ -32,7 +32,6 @@ public class Usuario {
     }
     public void modificarEstado(Tarea tar, String est){
         tar.actualizarEstado(est);
-        //HOLA NICOLAS!!!
     }
 
     public String getNombre() {
