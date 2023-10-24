@@ -4,9 +4,12 @@
  */
 package modelo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
+
 import modelo.Tarea;
 /**
  *
@@ -21,20 +24,43 @@ public class Usuario {
         this.nombre = nombre;
         this.correo = correo;
         this.contraseña = contraseña;
+        
     }
     
     LinkedList<Tarea> tareasPendientes = new LinkedList<>();
     Map<String, Tarea> tareasPorEtiqueta = new HashMap<>();
+     ArrayList<Tarea> listaTareas =new ArrayList<Tarea>();
     
     public void agregarTarea(Tarea tar){
         tareasPendientes.add(tar);
         tareasPorEtiqueta.put(tar.getEtiqueta(), tar);
+         listaTareas.add(tar);
     }
     public void modificarEstado(Tarea tar, String est){
         tar.actualizarEstado(est);
-        //HOLA NICOLAS!!!
-    }
+      //Si tarea esta completada entonves elimina de la cola y modificar el estado del array y el hasmap
+      if(tar.getEstado().equals("Completado")){
+      tareasPendientes.remove(tar); 
+      
+            
+       Iterator it=listaTareas.iterator();
+        while (it.hasNext()) {
+            Object produc = it.next();
+            Tarea pro= (Tarea)produc;
+             if(pro.equals(tar)){
+                pro.setEstado("completado");
+             }
 
+         
+        }   
+       String etiqueta = tar.getEtiqueta();
+    if (tareasPorEtiqueta.containsKey(etiqueta)) {
+        Tarea tareaEnHashMap = tareasPorEtiqueta.get(etiqueta);
+        tareaEnHashMap.setEstado("completado");
+        tareasPorEtiqueta.put(etiqueta, tareaEnHashMap); // Actualizar la tarea en el HashMap
+    }
+    }
+    }
     public String getNombre() {
         return nombre;
     }
@@ -58,6 +84,7 @@ public class Usuario {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-    
+  
+
     
 }
