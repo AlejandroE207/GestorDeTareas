@@ -38,6 +38,7 @@ public class Usuario {
     }
     public void modificarEstado(Tarea tar, String est){
         tar.actualizarEstado(est);
+<<<<<<< HEAD
       //Si tarea esta completada entonves elimina de la cola y modificar el estado del array y el hasmap
       if(tar.getEstado().equals("Completado")){
       tareasPendientes.remove(tar); 
@@ -50,6 +51,9 @@ public class Usuario {
              if(pro.equals(tar)){
                 pro.setEstado("completado");
              }
+=======
+    }
+>>>>>>> main
 
          
         }   
