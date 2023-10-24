@@ -4,53 +4,45 @@
  */
 package controlador;
 
-import jakarta.servlet.ServletConfig;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import modelo.Usuario ;
+import modelo.*;
 
 /**
  *
  * @author User
  */
-
-
-public class registro extends HttpServlet {
-    ArrayList<Usuario> usuarios = (ArrayList<Usuario>) getServletContext().getAttribute("usuarios");
-
+public class creacionTarea extends HttpServlet {
     
+
+   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
     }
-    
-    
+
+   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String nombre = request.getParameter("nombre");
-        String correo = request.getParameter("correo");
-        String contraseña = request.getParameter("contraseña"); 
+        Usuario user = (Usuario)request.getAttribute("usuarioLogueado");
+        String descripcion = request.getParameter("descripcion");
+        String etiqueta = request.getParameter("etiqueta");
+        String fechaLimit = request.getParameter("fechaLimit");
         
-        Usuario user3 = new Usuario(nombre,correo,contraseña);
-        usuarios.add(user3);
-        
-        request.getSession().setAttribute("usuario", user3);
-        response.sendRedirect("home.jsp"); 
-        
-        
+        Tarea tarea = new Tarea(descripcion, etiqueta, fechaLimit);
+        user.agregarTarea(tarea);
     }
 
   
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }
