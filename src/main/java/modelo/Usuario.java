@@ -35,6 +35,7 @@ public class Usuario {
         tareasPendientes.add(tar);
         tareasPorEtiqueta.put(tar.getEtiqueta(), tar);
         listaTareas.add(tar);
+        System.out.println("SE AGREGO LA TAREA AL ARRAY");
     }
 
     public void modificarEstado(Tarea tar, String est) {
@@ -61,6 +62,10 @@ public class Usuario {
             tareaEnHashMap.setEstado("completado");
             tareasPorEtiqueta.put(etiqueta, tareaEnHashMap); // Actualizar la tarea en el HashMap
         }
+    }
+    
+    public ArrayList mostrarArray(){
+        return listaTareas;
     }
 
     public String getNombre() {

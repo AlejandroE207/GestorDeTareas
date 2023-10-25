@@ -10,6 +10,8 @@
     
     Usuario user = (Usuario) session.getAttribute("usuario");
     String nombre = user.getNombre();
+    request.getSession().setAttribute("usuarioTarea", user);
+    //response.sendRedirect("NewTarea");
     
 %>
 <!DOCTYPE html>
@@ -24,5 +26,6 @@
 <body>
     <H1>HOME</H1>
     <p><%= nombre %></p>
+    <a href="registroTarea.jsp">REGISTRAR TAREA</a>
 </body>
 </html>
