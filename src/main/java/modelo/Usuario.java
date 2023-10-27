@@ -37,20 +37,24 @@ public class Usuario {
         listaTareas.add(tar);
         System.out.println("SE AGREGO LA TAREA AL ARRAY");
     }
+    
+    public void completarPendiente(Tarea tar,int indice, String estado){
+        tar.actualizarEstado(estado);
+        tareasPendientes.remove(indice);
+    }
 
-    public void modificarEstado(Tarea tar, String est) {
-        tar.actualizarEstado(est);
-
+    public void modificarEstado(Tarea tar, int indice ,String estado) {
+        
+        tar.actualizarEstado(estado);
         //Si tarea esta completada entonves elimina de la cola y modificar el estado del array y el hasmap
         if (tar.getEstado().equals("Completado")) {
-            tareasPendientes.remove(tar);
-
+            
             Iterator it = listaTareas.iterator();
             while (it.hasNext()) {
                 Object produc = it.next();
                 Tarea pro = (Tarea) produc;
                 if (pro.equals(tar)) {
-                    pro.setEstado("completado");
+                    pro.setEstado("Completado");
                 }
 
             }
@@ -59,13 +63,17 @@ public class Usuario {
         String etiqueta = tar.getEtiqueta();
         if (tareasPorEtiqueta.containsKey(etiqueta)) {
             Tarea tareaEnHashMap = tareasPorEtiqueta.get(etiqueta);
-            tareaEnHashMap.setEstado("completado");
+            tareaEnHashMap.setEstado("Completado");
             tareasPorEtiqueta.put(etiqueta, tareaEnHashMap); // Actualizar la tarea en el HashMap
         }
     }
-    
-    public ArrayList mostrarArray(){
+
+    public ArrayList mostrarArray() {
         return listaTareas;
+    }
+
+    public LinkedList mostrarCola() {
+        return tareasPendientes;
     }
 
     public String getNombre() {
@@ -83,6 +91,5 @@ public class Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-
 
 }

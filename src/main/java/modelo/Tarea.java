@@ -14,6 +14,11 @@ public class Tarea {
     private String estado;
     private String fechaLimit;
 
+    public Tarea() {
+    }
+
+    
+    
     public Tarea(String descripcion, String etiqueta, String fechaLimit) {
         this.descripcion = descripcion;
         this.etiqueta = etiqueta;

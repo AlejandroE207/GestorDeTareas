@@ -44,7 +44,8 @@ Usuario user = (Usuario) request.getSession().getAttribute("usuarioLogueado");
         
         String descripcion = request.getParameter("descripcion");
         String etiqueta = request.getParameter("etiqueta");
-        String fechaLimit = request.getParameter("fechaLimit");
+        String fechaLimit = request.getParameter("fecha");
+        System.out.println("FECHA LIMITE: "+fechaLimit);
         Usuario user1 = new Usuario("Alejo", "aer@hotmail.com");
         Tarea tarea = new Tarea(descripcion, etiqueta, fechaLimit);
         System.out.println("DESCRIPCION: "+user.getNombre());
@@ -63,6 +64,9 @@ Usuario user = (Usuario) request.getSession().getAttribute("usuarioLogueado");
             System.out.println("Estado: "+tar.getEstado());
             System.out.println("Fecha limite: "+tar.getFechaLimit());
         }
+        
+        
+        response.sendRedirect("home.jsp"); 
     }
 
   

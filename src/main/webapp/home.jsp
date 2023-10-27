@@ -16,16 +16,56 @@
 %>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="estiloPrincipal.css">
-        <link rel="stylesheet" href="normalize.css">
-        <title>Document</title>
-    </head>
-<body>
-    <H1>HOME</H1>
-    <p><%= nombre %></p>
-    <a href="registroTarea.jsp">REGISTRAR TAREA</a>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estiloPrincipal.css">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Document</title>
+</head>
+
+<body class="bodyHome">
+
+
+
+    <main class="mainHome">
+        
+        <section>
+            <h1 class="tituloSGT">SISTEMA DE GESTION DE TAREAS</h1>
+            <div class="contenedorOpciones">
+                <a href="registroTarea.jsp" class="opcion registrarTarea">
+                    <p>
+                        REGISTRAR TAREA
+                    </p>
+                </a>
+
+                <a href="tareasPendientes.jsp" class="opcion TareaPendiente">
+                    <p>
+                        TAREAS PENDIENTES
+                    </p>
+
+                </a>
+
+                <a href="" class="opcion HistoriaTarea">
+                    <p>
+                        HISTORIAL TAREAS
+                    </p>
+
+                </a>
+
+
+                <a href="" class="opcion TareaEtiqueta">
+                    <p>
+                        TAREAS POR ETIQUETAS
+                    </p>
+
+                </a>
+            </div>
+
+
+        </section>
+    </main>
 </body>
+
 </html>

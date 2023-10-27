@@ -22,24 +22,15 @@
     <link rel="stylesheet" href="normalize.css">
     <title>Document</title>
 </head>
-<body>
+<body class="bodyRegistroTarea">
     <header>
-        <div class="wrapper">
-            <nav class="nav">
-                <a href="index.html" class="nav-item is-active" active-color="orange">Home</a>
-                <a href="login.html" class="nav-item" active-color="green">Login</a>
-                <a href="signup.html" class="nav-item" active-color="blue">Sign Up</a>
-                
-                <span class="nav-indicator"></span>
-              </nav>
-        </div>
+        
     </header>
-    <main class="mainLogin">
-        <h1><%= user.getNombre() %></h1>
+    <main class="mainRegistroTarea">
         <section class="seccionFormulario">
-            <form action="NewTarea" method="POST" class="formularioLogin">
-                <fieldset class="formularioLogin__fieldset">
-                        <legend class="formularioLogin__legend">
+            <form action="NewTarea" method="POST" class="formulario">
+                <fieldset class="formulario__fieldset">
+                        <legend class="formulario__legend">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
@@ -51,8 +42,8 @@
                     <div class="contenedor-campos">
                         
                         <div class="campo">
-                            <label class="campo__label" for="descripcion">Descripcion</label>
-                            <textarea name="descripcion">Descripción de tu tarea o un breve resumen de ella!</textarea>
+                            <label class="campo__label " for="descripcion">Descripcion</label>
+                            <textarea name="descripcion" class="campo__field descripcion">Descripción de tu tarea o un breve resumen de ella!</textarea>
                             <!-- <input class="campo__field" type="area" placeholder="alguien@algo.com" id="correo" name="correo"> -->
                         </div>
 
@@ -65,8 +56,7 @@
                             <label class="campo__label" for="fecha">Fecha</label>
                             <input class="campo__field" type="date"  id="fecha" name="fecha">
                         </div> 
-                        
-                        
+
                     </div>
                     <div class="flex alinear-centro">
                         <input class="boton enviar w-sm-100"   type="submit" value="Enviar">
