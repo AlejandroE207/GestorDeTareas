@@ -19,13 +19,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="EstilosTablas.css">
         <title>JSP Page</title>
     </head>
     <body>
         <h1>TAREAS PENDIENTES</h1>
         <div>
-            <table border="4">
+            <table class="Tabla">
+       
                 <thead>
                 <th>Num</th>
                 <th>Descripció</th>
@@ -73,7 +76,15 @@
                 </tbody>
             </table>
         </div>
-                
+        <button onclick="redirigir()">Volver a inicio</button>
+
+<script>
+    // Función JavaScript para redirigir
+    function redirigir() {
+        // Redirigir a la página deseada
+        window.location.href = 'home.jsp'; 
+    }
+</script>        
     </body>
     <a href="https://www.flaticon.es/iconos-gratis/check-in-foursquare" title="check in foursquare iconos">Check in foursquare iconos creados por Freepik - Flaticon</a>
 </html>

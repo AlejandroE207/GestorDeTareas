@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
-import modelo.Tarea;
+
 
 /**
  *
@@ -31,6 +31,16 @@ public class Usuario {
     Map<String, Tarea> tareasPorEtiqueta = new HashMap<>();
     ArrayList<Tarea> listaTareas = new ArrayList<Tarea>();
 
+
+// Métodos getter y setter para tareasPorEtiqueta
+public Map<String, Tarea> getTareasPorEtiqueta() {
+    return tareasPorEtiqueta;
+}
+
+public void setTareasPorEtiqueta(Map<String, Tarea> tareasPorEtiqueta) {
+    this.tareasPorEtiqueta = tareasPorEtiqueta;
+}
+
     public void agregarTarea(Tarea tar) {
         tareasPendientes.add(tar);
         tareasPorEtiqueta.put(tar.getEtiqueta(), tar);
@@ -43,11 +53,11 @@ public class Usuario {
         tareasPendientes.remove(indice);
     }
 
-    public void modificarEstado(Tarea tar, int indice ,String estado) {
+ public void modificarEstado(Tarea tar, int indice ,String estado) {
         
         tar.actualizarEstado(estado);
-        //Si tarea esta completada entonves elimina de la cola y modificar el estado del array y el hasmap
-        if (tar.getEstado().equals("Completado")) {
+       tar.setEstado("Completado");
+          if (tar.getEstado().equals("Completado")) {
             
             Iterator it = listaTareas.iterator();
             while (it.hasNext()) {
@@ -59,7 +69,9 @@ public class Usuario {
 
             }
 
-        }
+            
+
+        
         String etiqueta = tar.getEtiqueta();
         if (tareasPorEtiqueta.containsKey(etiqueta)) {
             Tarea tareaEnHashMap = tareasPorEtiqueta.get(etiqueta);
@@ -68,9 +80,12 @@ public class Usuario {
         }
     }
 
-    public ArrayList mostrarArray() {
-        return listaTareas;
-    }
+ }  
+
+public ArrayList<Tarea> mostrarArray() {
+     return listaTareas;
+}
+
 
     public LinkedList mostrarCola() {
         return tareasPendientes;
@@ -91,5 +106,5 @@ public class Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-
+ 
 }

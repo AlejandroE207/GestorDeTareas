@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.Iterator;
 import modelo.*;
 import java.util.LinkedList;
@@ -42,16 +43,20 @@ public class ModificarPendiente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Usuario user = (Usuario) request.getSession().getAttribute("usuarioLogueado");
-        int indice = Integer.parseInt(request.getParameter("indice"));
-        LinkedList<Tarea> pendiente = new LinkedList<>();
-        pendiente=user.mostrarCola();
-        Tarea tar = new Tarea();
-        
-        user.completarPendiente(tar, indice, "Completado");
+     int indice = Integer.parseInt(request.getParameter("indice"));
+     LinkedList<Tarea> pendiente = new LinkedList<>();
+     ArrayList<Tarea> listaTareas = new ArrayList<Tarea>();
+     pendiente = user.mostrarCola();
 
-        response.sendRedirect("tareasPendientes.jsp"); 
-        
-        
+     Tarea tar = pendiente.get(indice); 
+     tar.setEstado("Completado"); 
+
+     user.completarPendiente(tar, indice, "Completado");
+
+     listaTareas = user.mostrarArray();
+     response.sendRedirect("tareasPendientes.jsp");
+
+
     }
 
     

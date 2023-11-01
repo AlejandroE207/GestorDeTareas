@@ -49,7 +49,7 @@
 
                 </a>
 
-                <a href="" class="opcion HistoriaTarea">
+                <a href="HistorialDeTareas.jsp" class="opcion HistoriaTarea">
                     <p>
                         HISTORIAL TAREAS
                     </p>
@@ -57,7 +57,7 @@
                 </a>
 
 
-                <a href="" class="opcion TareaEtiqueta">
+                <a href="TareaPorEtiquetas.jsp" class="opcion TareaEtiqueta">
                     <p>
                         TAREAS POR ETIQUETAS
                     </p>
