@@ -39,6 +39,8 @@
                         REGISTRAR TAREA
                     </p>
                 </a>
+                
+                
 
                 <a href="tareasPendientes.jsp" class="opcion TareaPendiente">
                     <p>
