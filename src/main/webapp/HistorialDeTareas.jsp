@@ -38,9 +38,7 @@
  <button onclick="redirigir()">Volver a inicio</button>
 
 <script>
-    // Función JavaScript para redirigir
     function redirigir() {
-        // Redirigir a la página deseada
         window.location.href = 'home.jsp'; 
     }
 </script>

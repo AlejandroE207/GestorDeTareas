@@ -12,7 +12,18 @@
 <% 
     Usuario user = (Usuario) request.getSession().getAttribute("usuarioLogueado");
     LinkedList pendiente = new LinkedList();
-    pendiente = user.mostrarCola();
+    
+    try {
+    if (user != null) {
+        pendiente = user.mostrarCola();
+    } else {
+
+        pendiente = new LinkedList<>();
+    }
+} catch (Exception e) {
+
+    e.printStackTrace();
+}
     int numTar = pendiente.size();
 %>
 
@@ -25,7 +36,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>TAREAS PENDIENTES</h1>
+        <h1 class="tituloTP">TAREAS PENDIENTES</h1>
         <div>
             <table class="Tabla">
        

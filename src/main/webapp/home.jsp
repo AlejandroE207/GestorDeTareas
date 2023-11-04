@@ -11,7 +11,6 @@
     Usuario user = (Usuario) session.getAttribute("usuario");
     String nombre = user.getNombre();
     request.getSession().setAttribute("usuarioTarea", user);
-    //response.sendRedirect("NewTarea");
     
 %>
 <!DOCTYPE html>

@@ -23,56 +23,33 @@ import modelo.Usuario;
 @WebServlet(name = "NewTarea", urlPatterns = {"/NewTarea"})
 public class NewTarea extends HttpServlet {
 
-    
-
-   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
-   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("INGRESO AL SERVLET DE TAREA");
-//        Usuario user = (Usuario) request.getParameter("usuarioLogueado");
-Usuario user = (Usuario) request.getSession().getAttribute("usuarioLogueado");
-        System.out.println("NOMBRE: "+user.getCorreo());
-        
-        
+
+        Usuario user = (Usuario) request.getSession().getAttribute("usuarioLogueado");
+
         String descripcion = request.getParameter("descripcion");
         String etiqueta = request.getParameter("etiqueta");
         String fechaLimit = request.getParameter("fecha");
-        System.out.println("FECHA LIMITE: "+fechaLimit);
-        Usuario user1 = new Usuario("Alejo", "aer@hotmail.com");
+        
         Tarea tarea = new Tarea(descripcion, etiqueta, fechaLimit);
-        System.out.println("DESCRIPCION: "+user.getNombre());
-        
-        
+
         user.agregarTarea(tarea);
-        ArrayList<Tarea> listaTareas = new ArrayList<Tarea>();
-        listaTareas = user.mostrarArray();
-        System.out.println("TAMAÑO: "+listaTareas.size());
-        Iterator it = listaTareas.iterator();
-        while(it.hasNext()){
-            Object obj = it.next();
-            Tarea tar = (Tarea) obj;
-            System.out.println("Descripcion: "+tar.getDescripcion());
-            System.out.println("Etiqueta: "+tar.getEtiqueta());
-            System.out.println("Estado: "+tar.getEstado());
-            System.out.println("Fecha limite: "+tar.getFechaLimit());
-        }
-        
-        
-        response.sendRedirect("home.jsp"); 
+
+
+        response.sendRedirect("home.jsp");
     }
 
-  
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

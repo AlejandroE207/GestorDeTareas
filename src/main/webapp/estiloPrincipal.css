@@ -212,14 +212,12 @@ textarea {
   line-height: 1.4;
 }
 
-/* Cambia el color del fondo cuando el textarea está enfocado */
 textarea:focus {
   background-color: #f0f0f0;
   border-color: #007bff;
 }
 
 
-/* Cambiar el cursor al estilo "pointer" cuando se coloca sobre el textarea */
 textarea:hover {
   cursor: pointer;
 }

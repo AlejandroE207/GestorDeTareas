@@ -12,9 +12,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import modelo.*;
 import java.util.LinkedList;
+import java.util.Map;
 
 /**
  *
@@ -23,43 +25,34 @@ import java.util.LinkedList;
 @WebServlet(name = "ModificarPendiente", urlPatterns = {"/ModificarPendiente"})
 public class ModificarPendiente extends HttpServlet {
 
-
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Usuario user = (Usuario) request.getSession().getAttribute("usuarioLogueado");
-     int indice = Integer.parseInt(request.getParameter("indice"));
-     LinkedList<Tarea> pendiente = new LinkedList<>();
-     ArrayList<Tarea> listaTareas = new ArrayList<Tarea>();
-     pendiente = user.mostrarCola();
+        int indice = Integer.parseInt(request.getParameter("indice"));
+        LinkedList<Tarea> pendiente = new LinkedList<>();
+        ArrayList<Tarea> listaTareas = new ArrayList<Tarea>();
+        Map<String, Tarea> tareasPorEtiqueta = new HashMap<>();
+        pendiente = user.mostrarCola();
 
-     Tarea tar = pendiente.get(indice); 
-     tar.setEstado("Completado"); 
+        Tarea tar = pendiente.get(indice);
+        tar.setEstado("Completado");
 
-     user.completarPendiente(tar, indice, "Completado");
+        user.completarPendiente(tar, indice, "Completado");
 
-     listaTareas = user.mostrarArray();
-     response.sendRedirect("tareasPendientes.jsp");
+        listaTareas = user.mostrarArray();
+        tareasPorEtiqueta = user.mostrarMap();
 
+        response.sendRedirect("tareasPendientes.jsp");
 
     }
 
-    
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -85,6 +85,9 @@ public void setTareasPorEtiqueta(Map<String, Tarea> tareasPorEtiqueta) {
 public ArrayList<Tarea> mostrarArray() {
      return listaTareas;
 }
+public Map<String, Tarea>  mostrarMap() {
+     return tareasPorEtiqueta;
+}
 
 
     public LinkedList mostrarCola() {
